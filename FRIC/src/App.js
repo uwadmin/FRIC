@@ -138,14 +138,17 @@ class App extends Component {
 
   setNextQuestion() {
     let counter = parseInt(this.state.counter) + 1;
+    console.log("goto1: " + this.state.goto)
     console.log("counter1: " + counter)
     if (this.state.goto !== '') {
-      counter = this.state.goto;
+      counter = parseInt(this.state.goto);
     }
+    console.log("goto2: " + this.state.goto )
     console.log("counter2: " + counter) 
     const questionId = this.state.questionId + 1;
 
     console.log("counter3: " + counter)
+    console.log("goto3: " + this.state.goto)
 
     this.setState({
       counter: counter,
@@ -153,7 +156,6 @@ class App extends Component {
       question: quizQuestions[counter].question,
       answerOptions: quizQuestions[counter].answers,
       answer: '',
-      goto: '',
     });
   }
 

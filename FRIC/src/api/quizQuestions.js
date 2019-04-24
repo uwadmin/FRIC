@@ -3,17 +3,17 @@ var quizQuestions = [{
         key: 0,
         answers: [{
                 type: "foo",
-                goto: 1,
+                goto: "1",
                 content: "1. Police"
             },
             {
                 type: "bar",
-                goto: 2,
+                goto: "2",
                 content: "2. Fire"
             },
             {
                 type: "baz",
-                goto: 3,
+                goto: "3",
                 content: "3. Both"
             }
         ]
@@ -28,12 +28,12 @@ var quizQuestions = [{
         key: 2,
         answers: [{
                 type: "foo",
-                goto: 3,
+                goto: "3",
                 content: "Yes"
             },
             {
                 type: "bar",
-                result: "404",
+                result: "4W4",
                 content: "No"
             }
         ]
@@ -47,12 +47,12 @@ var quizQuestions = [{
         question: "Are there any injured victims",
         key: 4,
         answers: [{
-                result: "200",
+                result: "2M0",
                 type: "foo",
                 content: "Yes"
             },
             {
-                result: "502",
+                result: "5T2",
                 type: "bar",
                 content: "No"
             },
