@@ -108,7 +108,7 @@ class App extends Component {
     this.setUserAnswer(event.currentTarget.value);
     console.log("type: " + typeof this.state.goto)
     console.log("value1 " + this.state.goto)
-    if (this.checkReturn(this.state.goto)) {
+    if (this.checkReturn(event.currentTarget.value)) {
       console.log("type2 " + typeof this.state.goto)
       setTimeout(() => this.setResults(), 300);
     } else {
