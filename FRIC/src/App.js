@@ -80,7 +80,7 @@ class App extends Component {
       answerOptions: [],
       answer: '',
       result: '',
-      goto: 0,
+      goto: '',
       text: '',
     };
 
@@ -99,15 +99,21 @@ class App extends Component {
     });
   }
 
+  checkReturn(str) {
+    return String(str).match(/[a-z]/i)
+  }
+
   handleAnswerSelected(event) {
     // console.log(event.currentTarget.value)
     this.setUserAnswer(event.currentTarget.value);
-    console.log(typeof this.state.goto)
-    if (typeof this.state.goto !== 'number') {
-      console.log("type3" + typeof this.state.goto)
-      setTimeout(() => this.setResults(this.getResults()), 300);
+    console.log("type: " + typeof this.state.goto)
+    console.log("value1 " + this.state.goto)
+    if (this.checkReturn(this.state.goto)) {
+      console.log("type2 " + typeof this.state.goto)
+      setTimeout(() => this.setResults(), 300);
     } else {
-      console.log("type3" + typeof this.state.goto)
+      console.log("type3 " + typeof this.state.goto)
+      console.log("value: " + this.state.goto)
       setTimeout(() => this.setNextQuestion(), 300);
     }
   }
@@ -117,6 +123,7 @@ class App extends Component {
       text: event.currentTarget.value
     });
  }
+
 
   handleAnswerInput(event) {
     document.getElementById('phone').value = this.state.text
@@ -132,11 +139,13 @@ class App extends Component {
   setNextQuestion() {
     let counter = parseInt(this.state.counter) + 1;
     console.log("counter1: " + counter)
-    if (this.state.goto != null) {
+    if (this.state.goto !== '') {
       counter = this.state.goto;
     }
     console.log("counter2: " + counter) 
     const questionId = this.state.questionId + 1;
+
+    console.log("counter3: " + counter)
 
     this.setState({
       counter: counter,
@@ -144,15 +153,11 @@ class App extends Component {
       question: quizQuestions[counter].question,
       answerOptions: quizQuestions[counter].answers,
       answer: '',
-      goto: null,
+      goto: '',
     });
   }
 
-  getResults() {
-    const answersCount = this.state.answersCount;
-  }
-
-  setResults(result) {
+  setResults() {
     this.setState({result: this.state.goto})
   }
 

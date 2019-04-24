@@ -6,9 +6,9 @@ import AnswerOption from '../components/AnswerOption';
 
 function MultiChoice(props) {
   function renderAnswerOptions(key) {
-    console.log(key.result == undefined)
+    console.log(key.result === undefined)
     let v = 0
-    if (key.result == undefined) {
+    if (key.result === undefined) {
       v = key.goto
     } else {
       v = key.result
