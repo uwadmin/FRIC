@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import quizQuestions from './api/quizQuestions';
 import MultiChoice from './components/MultiChoice';
 import TextInput from './components/TextInput'
@@ -6,7 +6,7 @@ import Result from './components/Result';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
 const styles = theme => ({
@@ -91,7 +91,7 @@ class App extends Component {
 
   componentWillMount() {
     const AnswerOptions = quizQuestions.map(question =>
-        question.answers
+      question.answers
     );
     this.setState({
       question: quizQuestions[0].question,
@@ -122,7 +122,7 @@ class App extends Component {
     this.setState({
       text: event.currentTarget.value
     });
- }
+  }
 
 
   handleAnswerInput(event) {
@@ -140,11 +140,11 @@ class App extends Component {
     let counter = parseInt(this.state.counter) + 1;
     console.log("goto1: " + this.state.goto)
     console.log("counter1: " + counter)
-    if (this.state.goto !== '') {
+    if (this.state.goto === "") {
       counter = parseInt(this.state.goto);
     }
-    console.log("goto2: " + this.state.goto )
-    console.log("counter2: " + counter) 
+    console.log("goto2: " + this.state.goto)
+    console.log("counter2: " + counter)
     const questionId = this.state.questionId + 1;
 
     console.log("counter3: " + counter)
@@ -160,38 +160,38 @@ class App extends Component {
   }
 
   setResults() {
-    this.setState({result: this.state.goto})
+    this.setState({ result: this.state.goto })
   }
 
   renderQuiz() {
     if (this.state.answerOptions.length === 0) {
       return (
-          <TextInput
-            answer={this.state.answer}
-            answerOptions={this.state.answerOptions}
-            questionId={this.state.questionId}
-            question={this.state.question}
-            questionTotal={quizQuestions.length}
-            onAnswerInput={this.handleAnswerInput}
-            onValueChange={this.handleTextChange}
-          />
+        <TextInput
+          answer={this.state.answer}
+          answerOptions={this.state.answerOptions}
+          questionId={this.state.questionId}
+          question={this.state.question}
+          questionTotal={quizQuestions.length}
+          onAnswerInput={this.handleAnswerInput}
+          onValueChange={this.handleTextChange}
+        />
       );
     } else {
       return (
-          <MultiChoice
-              answer={this.state.answer}
-              answerOptions={this.state.answerOptions}
-              questionId={this.state.questionId}
-              question={this.state.question}
-              questionTotal={quizQuestions.length}
-              onAnswerSelected={this.handleAnswerSelected}
-          />
+        <MultiChoice
+          answer={this.state.answer}
+          answerOptions={this.state.answerOptions}
+          questionId={this.state.questionId}
+          question={this.state.question}
+          questionTotal={quizQuestions.length}
+          onAnswerSelected={this.handleAnswerSelected}
+        />
       );
     }
   }
 
   renderResult() {
-    return <Result quizResult={this.state.result}/>;
+    return <Result quizResult={this.state.result} />;
   }
 
   renderPhone() {
@@ -199,125 +199,183 @@ class App extends Component {
   }
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
     return (
-        <div className="App">
-          <div className="App-header">
-            {/* <img src={logo} className="App-logo" alt="logo" /> */}
-            <h1> F.R.I.C </h1>
-            <TextField
-                className={classes.margin}
-                InputLabelProps={{
-                  classes: {
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  },
-                }}
-                InputProps={{
-                  classes: {
-                    root: classes.cssOutlinedInput,
-                    focused: classes.cssFocused,
-                    notchedOutline: classes.notchedOutline,
-                  },
-                  readOnly: true
-                }}
-                label="Phone"
-                defaultValue="Phone Number"
-                variant="outlined"
-                style={
-                  {
-                    width: 190
-                  }
-                }
-                id="phone"
-            />
-            <TextField
-                className={classes.margin}
-                InputLabelProps={{
-                  classes: {
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  },
-                }}
-                InputProps={{
-                  classes: {
-                    root: classes.cssOutlinedInput,
-                    focused: classes.cssFocused,
-                    notchedOutline: classes.notchedOutline,
-                  },
-                  readOnly: true
-                }}
-                label="Caller"
-                defaultValue="Caller Name"
-                variant="outlined"
-                style={
-                  {
-                    width: 190
-                  }
-                }
-                id="caller"
-            />
-            <br/>
-            <TextField
-                className={classes.margin}
-                InputLabelProps={{
-                  classes: {
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  },
-                  readOnly: true
-                }}
-                InputProps={{
-                  classes: {
-                    root: classes.cssOutlinedInput,
-                    focused: classes.cssFocused,
-                    notchedOutline: classes.notchedOutline,
-                  },
-                  readOnly: true
-                }}
-                multiline
-                rowsMax="4"
-                label="Location"
-                defaultValue="Emergency Location"
-                variant="outlined"
-                style={
-                  {
-                    width: 400
-                  }
-                }
-                id="location"
-            />
-            <br/>
-            <TextField
-                className={classes.margin}
-                InputLabelProps={{
-                  classes: {
-                    root: classes.cssLabel,
-                    focused: classes.cssFocused,
-                  },
-                }}
-                InputProps={{
-                  classes: {
-                    root: classes.cssOutlinedInput,
-                    focused: classes.cssFocused,
-                    notchedOutline: classes.notchedOutline,
-                  },
-                  readOnly: true
-                }}
-                label="Report Incident"
-                defaultValue="Details"
-                variant="outlined"
-                style={
-                  {
-                    width: 400
-                  }
-                }
-                // fullWidth
-                id="report"
-            />
-          </div>
-          {this.state.result ? this.renderResult() : this.renderQuiz()}
+      <div className="App">
+        <div className="App-header">
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          <h1> F.R.I.C </h1>
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            label="Phone"
+            defaultValue="Phone Number"
+            variant="outlined"
+            style={
+              {
+                width: 190
+              }
+            }
+            id="phone"
+          />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            label="Caller"
+            defaultValue="Caller Name"
+            variant="outlined"
+            style={
+              {
+                width: 190
+              }
+            }
+            id="caller"
+          />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+              readOnly: true
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            rowsMax="4"
+            label="Sex"
+            defaultValue="Sex"
+            variant="outlined"
+            style={
+              {
+                width: 190
+              }
+            }
+            id="sex"
+          />
+          <br />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+              readOnly: true
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            multiline
+            rowsMax="4"
+            label="Location"
+            defaultValue="Emergency Location"
+            variant="outlined"
+            style={
+              {
+                width: 600
+              }
+            }
+            id="location"
+          />
+          <br />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            label="Report Incident"
+            defaultValue="Details"
+            variant="outlined"
+            style={
+              {
+                width: 600
+              }
+            }
+            // fullWidth
+            id="report"
+          />
+          <br />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+              readOnly: true
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            multiline
+            rowsMax="4"
+            label="Code"
+            defaultValue="Code"
+            variant="outlined"
+            style={
+              {
+                width: 300,
+              }
+            }
+      id="code"
+    />
         </div>
+        {this.state.result ? this.renderResult() : this.renderQuiz()}
+      </div>
     );
   }
 }
