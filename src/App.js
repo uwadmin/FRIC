@@ -8,6 +8,14 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import PopOver from './components/PopOver';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 const styles = theme => ({
   container: {
@@ -82,6 +90,7 @@ class App extends Component {
       result: '',
       goto: '',
       text: '',
+      open: false,
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -102,6 +111,14 @@ class App extends Component {
   checkReturn(str) {
     return String(str).match(/[a-z]/i)
   }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   handleAnswerSelected(event) {
     // console.log(event.currentTarget.value)
@@ -126,7 +143,12 @@ class App extends Component {
 
 
   handleAnswerInput(event) {
-    document.getElementById('phone').value = this.state.text
+    if (this.state.question.match(/number/i)) {
+      document.getElementById('phone').value = this.state.text
+    }
+    if (this.state.question.match(/location/i)) {
+      document.getElementById('location').value = this.state.text
+    }
     this.setNextQuestion()
   }
 
@@ -194,8 +216,26 @@ class App extends Component {
     return <Result quizResult={this.state.result} />;
   }
 
-  renderPhone() {
-    return "hello"
+  renderHintHelper(content, title) {
+    return <Dialog
+      open={this.state.open}
+      onClose={this.handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      children={<PopOver content={content} title={title} handleClose={this.handleClose}/>}
+    >
+    </Dialog>
+  }
+
+  renderHint() {
+    if (this.state.question.match(/number/i)) {
+      return this.renderHintHelper("hello", "world");
+    }
+
+    if (this.state.question.match(/location/i)) {
+      return this.renderHintHelper("test", "dialog");
+    }
+    return this.renderHintHelper("", "")
   }
 
   render() {
@@ -371,10 +411,25 @@ class App extends Component {
                 width: 300,
               }
             }
-      id="code"
-    />
-        </div>
+            id="code"
+          />
+       </div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
+        <div style = {{
+          display: "flex",
+          justifyContent: "flex-end"
+        }
+        }>
+          <Button variant="outlined" color="primary" onClick={this.handleClickOpen} style={
+            {
+              margin: 20,
+            }
+          }>
+            About This Question
+        </Button>
+        {this.renderHint()}
+        </div>
+
       </div>
     );
   }
