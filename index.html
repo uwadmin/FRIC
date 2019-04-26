@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>index</title>
+        <link type='text/css' rel='stylesheet' href='/css/style.css'/>
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+<body>
+    <form>
+        <label for="names">Caller Name</label>
+        <div class="form-row" id="names">
+            <div class="form-row">
+                <div class="col-5">
+                  <input type="text" class="form-control" placeholder="First">
+                </div>
+                <div class="col-5">
+                  <input type="text" class="form-control" placeholder="Last">
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" placeholder="MI">
+                </div>
+              </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      </div>
+        <div class="form-row pt-3">
+            <div class="form-row">
+                <div class="col-7">
+                  <input type="text" class="form-control" placeholder="City">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="State">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Zip">
+                </div>
+              </div>
+        </div>
+        <div class="col-3 p-0">
+            <label for="incCode">Code</label>
+            <input type="code" class="form-control" id="incCode" placeholder="Incident Code"> 
+            <a href="select.html" target="_blank"><button type="button" class="btn btn-primary">Code Search</button></a>     
+        </div>
+        <div class="form-group">
+            <label for="ReportBox">Incident Report</label>
+            <textarea class="form-control" id="ReportBox" rows="3"></textarea>
+        </div>
+        <script>
+                var quesans = decodeURIComponent(window.location.search);
+                quesans = quesans.substring(1);
+                var queries = quesans.split("&");
+                for(var i = 0; i<queries.length; i++){
+                    document.write(queries[i] + "<br>");
+                }    
+            </script>
+        <div class="pt-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</body>
