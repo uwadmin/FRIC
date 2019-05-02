@@ -233,7 +233,7 @@ class App extends Component {
     document.getElementById('code').value = this.state.goto
   }
 
-  renderHintHelper(content, title) {
+  renderHintHelper(title, content) {
     return <Dialog
       open={this.state.open}
       onClose={this.handleClose}
@@ -246,26 +246,25 @@ class App extends Component {
 
   renderHint() {
     if (this.state.question.match(/What is the emergency/i)) {
-      return this.renderHintHelper("hello", "world");
+      return this.renderHintHelper("What is the emergency?", "This question is meant to gather an initial sense of the situation and is no way an invitation to tell your entire life story. Keep your answer brief, include the number of injured people and their condition and any immediate dangers. The call receiver will ask you specific follow up questions based on your answer in order to get only the important information.");
     }
-
     if (this.state.question.match(/department/i)) {
-      return this.renderHintHelper("hello1", "world1");
+      return this.renderHintHelper("Police or Fire", "Some geographical areas have different PSAP’s answering different types of calls. For example, all calls that come in the Seattle area are screen to be passed to different PSAP’s based on the type of emergency and the location. So a fire will get sent to the Seattle Fire Department call receivers or a reckless driver on I5 will get sent to the Washington State Patrol. If you get asked this question, be prepared to be transferred to a different call receiver and know that while it may take a few extra seconds, you are going to be getting help from a more specialized call receiver.");
     }
 
     if (this.state.question.match(/where/i)) {
-      return this.renderHintHelper("hello2", "world2");
+      return this.renderHintHelper("Where is the emergency", "The tv shows and movies are wrong. When you call 911, the call receiver cannot immediately see where you are calling from. If you are not able to say your location, they can attempt to ping your phone and get an approximate radius of your location but that is rarely helpful in an emergency as you are not always at the same location as the emergency. So, be patient when the call receiver asks for the location of the emergency and always be aware of your location before calling 911.");
     }
 
     if (this.state.question.match(/sex/i)) {
-      return this.renderHintHelper("hello3", "world3");
+      return this.renderHintHelper("What is the patient’s age/sex?", "This question may seem weird at first glance, but when it comes to medical emergencies the age and sex of a person matter. Unexplained chest pain in a small child is more likely to be an asthma than a cardiac incident, and people of a different sex will exhibit different cardiac symptoms to the same problem. Don’t overcomplicate your answer, feel free to give a general age such as mid 40’s and use your best judgement for the sex of people you do not know.");
     }
 
     if (this.state.question.match(/conscious/i)) {
-      return this.renderHintHelper("hello4", "world4");
+      return this.renderHintHelper("Is the person conscious?", "This will be one of the first questions you will be asked in case of a medical emergency. When the call receiver asks this question, they want to know if the person is doing things like making noises and moving. Many callers often confuse this with coherent, which means able to speak and respond normally. If you say no, the call receiver will immediately ask for the highest level of aid called a Medic to your location as the emergency is likely very serious. If you say yes, they will continue to ask you questions so they make sure that only the necessary help is sent. Either way you answer, do it honestly and know that there are a limited number of Medics and that they can be more expensive than the lower level aid cars.");
     }
     if (this.state.question.match(/telephone/i)) {
-      return this.renderHintHelper("hello5", "world5");
+      return this.renderHintHelper("What is the telephone # you are calling from?", "This another example of how Hollywood doesn’t always give accurate depictions of an emergency. While most agencies will have the ability to see your call back number, it is not always accurate. It only takes a second to confirm and it can be useful if the line gets disconnected during the call or the first responders want to contact you on their way the scene.");
     }
 
     return this.renderHintHelper("Sorry", "No hint here");
