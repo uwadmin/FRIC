@@ -127,6 +127,7 @@ function TextInput(props) {
             }
             onChange={props.onValueChange}
             id="txt"
+            defaultValue=""
           />
           <br />
           <Button variant="contained" className={styles.button} onClick={props.onAnswerInput}

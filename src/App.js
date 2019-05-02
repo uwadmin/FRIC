@@ -106,6 +106,9 @@ class App extends Component {
       question: quizQuestions[0].question,
       answerOptions: AnswerOptions[0],
     });
+    // if (document.getElementById('txt') !== undefined) {
+      //  document.getElementById('txt').value = ""
+    // }
   }
 
   checkReturn(str) {
@@ -143,12 +146,25 @@ class App extends Component {
 
 
   handleAnswerInput(event) {
-    if (this.state.question.match(/number/i)) {
+
+    if (this.state.question.match(/What is the emergency/i)) {
+      document.getElementById('report').value = this.state.text
+      document.getElementById('txt').value = ""
+    }
+    if (this.state.question.match(/telephone/i)) {
       document.getElementById('phone').value = this.state.text
+      document.getElementById('txt').value = ""
     }
-    if (this.state.question.match(/location/i)) {
+    if (this.state.question.match(/where/i)) {
       document.getElementById('location').value = this.state.text
+      document.getElementById('txt').value = ""
     }
+
+    if (this.state.question.match(/sex/i)) {
+      document.getElementById('sex').value = this.state.text
+      document.getElementById('txt').value = ""
+    }
+
     this.setNextQuestion()
   }
 
@@ -162,7 +178,7 @@ class App extends Component {
     let counter = parseInt(this.state.counter) + 1;
     console.log("goto1: " + this.state.goto)
     console.log("counter1: " + counter)
-    if (this.state.goto === "") {
+    if (this.state.goto.length !== 0) {
       counter = parseInt(this.state.goto);
     }
     console.log("goto2: " + this.state.goto)
@@ -178,6 +194,7 @@ class App extends Component {
       question: quizQuestions[counter].question,
       answerOptions: quizQuestions[counter].answers,
       answer: '',
+      goto: '',
     });
   }
 
@@ -213,7 +230,7 @@ class App extends Component {
   }
 
   renderResult() {
-    return <Result quizResult={this.state.result} />;
+    document.getElementById('code').value = this.state.goto
   }
 
   renderHintHelper(content, title) {
@@ -228,14 +245,30 @@ class App extends Component {
   }
 
   renderHint() {
-    if (this.state.question.match(/number/i)) {
+    if (this.state.question.match(/What is the emergency/i)) {
       return this.renderHintHelper("hello", "world");
     }
 
-    if (this.state.question.match(/location/i)) {
-      return this.renderHintHelper("test", "dialog");
+    if (this.state.question.match(/department/i)) {
+      return this.renderHintHelper("hello1", "world1");
     }
-    return this.renderHintHelper("", "")
+
+    if (this.state.question.match(/where/i)) {
+      return this.renderHintHelper("hello2", "world2");
+    }
+
+    if (this.state.question.match(/sex/i)) {
+      return this.renderHintHelper("hello3", "world3");
+    }
+
+    if (this.state.question.match(/conscious/i)) {
+      return this.renderHintHelper("hello4", "world4");
+    }
+    if (this.state.question.match(/telephone/i)) {
+      return this.renderHintHelper("hello5", "world5");
+    }
+
+    return this.renderHintHelper("Sorry", "No hint here");
   }
 
   render() {

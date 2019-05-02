@@ -9,7 +9,7 @@ var quizQuestions = [
         key: 1,
         answers: [{
                 type: "foo",
-                goto: 1,
+                goto: 2,
                 content: "1. Police"
             },
             {
@@ -35,16 +35,11 @@ var quizQuestions = [
         answers: []
     },
     {
-        question: "What is the telephone # you are calling from?",
-        key: 4,
-        answers: []
-    },
-    {
         question: "Is the person conscious?",
-        key: 5,
+        key: 4,
         answers: [{
                 type: "foo",
-                goto: 3,
+                goto: 5,
                 content: "Yes"
             },
             {
@@ -53,6 +48,11 @@ var quizQuestions = [
                 content: "No"
             }
         ]
+    },
+    {
+        question: "What is the telephone # you are calling from?",
+        key: 5,
+        answers: []
     },
     {
         question: "Is the person breathing normally?",
@@ -68,7 +68,8 @@ var quizQuestions = [
                 content: "No"
             }
         ]
-    }
+    },
+
 ];
 
 export default quizQuestions;
