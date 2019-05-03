@@ -300,7 +300,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             label="Phone Number"
             defaultValue="Phone Number"
@@ -326,7 +326,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             label="Caller Name"
             defaultValue="Caller Name"
@@ -345,7 +345,7 @@ class App extends Component {
                 root: classes.cssLabel,
                 focused: classes.cssFocused,
               },
-              readOnly: true
+              readOnly: false
             }}
             InputProps={{
               classes: {
@@ -353,7 +353,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             rowsMax="4"
             label="Patient Sex"
@@ -373,7 +373,7 @@ class App extends Component {
                 root: classes.cssLabel,
                 focused: classes.cssFocused,
               },
-              readOnly: true
+              readOnly: false
             }}
             InputProps={{
               classes: {
@@ -381,7 +381,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             rowsMax="4"
             label="Patient Age"
@@ -403,7 +403,7 @@ class App extends Component {
                 root: classes.cssLabel,
                 focused: classes.cssFocused,
               },
-              readOnly: true
+              readOnly: false
             }}
             InputProps={{
               classes: {
@@ -411,7 +411,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             multiline
             rowsMax="4"
@@ -440,7 +440,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             label="Report Incident"
             defaultValue="Report Incident"
@@ -461,7 +461,7 @@ class App extends Component {
                 root: classes.cssLabel,
                 focused: classes.cssFocused,
               },
-              readOnly: true
+              readOnly: false
             }}
             InputProps={{
               classes: {
@@ -469,7 +469,7 @@ class App extends Component {
                 focused: classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
-              readOnly: true
+              readOnly: false
             }}
             multiline
             rowsMax="4"
