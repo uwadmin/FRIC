@@ -2,7 +2,7 @@
   "name": "react-quiz",
   "version": "2.0.0",
   "private": false,
-  "homepage": "https://uwadmin.github.io/FRIC/"
+  "homepage": "https://uwadmin.github.io/FRIC/",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "prop-types": "^15.6.2",
@@ -27,5 +27,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
