@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
+import Button from '@material-ui/core/Button';
 
 function Result(props) {
   return (
@@ -13,15 +14,24 @@ function Result(props) {
       transitionAppear
       transitionAppearTimeout={500}
     >
-      <h2>
-        The code is  <strong>{props.quizResult}</strong>!
-      </h2>
+      <Button variant="contained" onClick={(e) => { props.handleClick(e) }}
+        style={
+          {
+            margin: 30,
+            marginLeft: 300
+          }
+        }>
+        Next
+      </Button>
+
     </CSSTransitionGroup>
   );
 }
 
+
+
 Result.propTypes = {
-  quizResult: PropTypes.string.isRequired
+  handleClick: PropTypes.func.isRequired
 };
 
 export default Result;

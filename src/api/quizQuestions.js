@@ -30,33 +30,38 @@ var quizQuestions = [
         answers: []
     },
     {
-        question: "What is the patient's age/sex?",
+        question: "What is the patient's sex?",
         key: 3,
+        answers: []
+    },   
+    {
+        question: "What is the patient's age?",
+        key: 4,
         answers: []
     },
     {
         question: "Is the person conscious?",
-        key: 4,
+        key: 5,
         answers: [{
                 type: "foo",
-                goto: 5,
+                goto: 6,
                 content: "Yes"
             },
             {
                 type: "bar",
-                goto: 6,
+                goto: 7,
                 content: "No"
             }
         ]
     },
     {
         question: "What is the telephone # you are calling from?",
-        key: 5,
+        key: 6,
         answers: []
     },
     {
         question: "Is the person breathing normally?",
-        key: 6,
+        key: 7,
         answers: [{
             type: "foo",
             result: "9R1",

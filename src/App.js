@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import quizQuestions from './api/quizQuestions';
 import MultiChoice from './components/MultiChoice';
 import TextInput from './components/TextInput'
-import Result from './components/Result';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
@@ -11,10 +10,7 @@ import purple from '@material-ui/core/colors/purple';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import PopOver from './components/PopOver';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Result from './components/Result';
 
 
 const styles = theme => ({
@@ -96,6 +92,7 @@ class App extends Component {
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     this.handleAnswerInput = this.handleAnswerInput.bind(this)
     this.handleTextChange = this.handleTextChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentWillMount() {
@@ -144,6 +141,12 @@ class App extends Component {
     });
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    window.location.reload()
+  }
+  
+
 
   handleAnswerInput(event) {
 
@@ -162,6 +165,11 @@ class App extends Component {
 
     if (this.state.question.match(/sex/i)) {
       document.getElementById('sex').value = this.state.text
+      document.getElementById('txt').value = ""
+    }
+
+    if (this.state.question.match(/age/i)) {
+      document.getElementById('age').value = this.state.text
       document.getElementById('txt').value = ""
     }
 
@@ -231,6 +239,7 @@ class App extends Component {
 
   renderResult() {
     document.getElementById('code').value = this.state.goto
+    return <Result handleClick={this.handleClick} />;
   }
 
   renderHintHelper(title, content) {
@@ -256,7 +265,7 @@ class App extends Component {
       return this.renderHintHelper("Where is the emergency", "The tv shows and movies are wrong. When you call 911, the call receiver cannot immediately see where you are calling from. If you are not able to say your location, they can attempt to ping your phone and get an approximate radius of your location but that is rarely helpful in an emergency as you are not always at the same location as the emergency. So, be patient when the call receiver asks for the location of the emergency and always be aware of your location before calling 911.");
     }
 
-    if (this.state.question.match(/sex/i)) {
+    if (this.state.question.match(/sex|age/i)) {
       return this.renderHintHelper("What is the patient’s age/sex?", "This question may seem weird at first glance, but when it comes to medical emergencies the age and sex of a person matter. Unexplained chest pain in a small child is more likely to be an asthma than a cardiac incident, and people of a different sex will exhibit different cardiac symptoms to the same problem. Don’t overcomplicate your answer, feel free to give a general age such as mid 40’s and use your best judgement for the sex of people you do not know.");
     }
 
@@ -276,7 +285,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1> F.R.I.C </h1>
+          {/* <h1> F.R.I.C </h1> */}
           <TextField
             className={classes.margin}
             InputLabelProps={{
@@ -293,12 +302,12 @@ class App extends Component {
               },
               readOnly: true
             }}
-            label="Phone"
+            label="Phone Number"
             defaultValue="Phone Number"
             variant="outlined"
             style={
               {
-                width: 190
+                width: 140
               }
             }
             id="phone"
@@ -319,12 +328,12 @@ class App extends Component {
               },
               readOnly: true
             }}
-            label="Caller"
+            label="Caller Name"
             defaultValue="Caller Name"
             variant="outlined"
             style={
               {
-                width: 190
+                width: 140
               }
             }
             id="caller"
@@ -347,16 +356,45 @@ class App extends Component {
               readOnly: true
             }}
             rowsMax="4"
-            label="Sex"
-            defaultValue="Sex"
+            label="Patient Sex"
+            defaultValue="Patient Sex"
             variant="outlined"
             style={
               {
-                width: 190
+                width: 140
               }
             }
             id="sex"
           />
+          <TextField
+            className={classes.margin}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+              readOnly: true
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              readOnly: true
+            }}
+            rowsMax="4"
+            label="Patient Age"
+            defaultValue="Patient Age"
+            variant="outlined"
+            style={
+              {
+                width: 130
+              }
+            }
+            id="age"
+          />
+
           <br />
           <TextField
             className={classes.margin}
@@ -377,7 +415,7 @@ class App extends Component {
             }}
             multiline
             rowsMax="4"
-            label="Location"
+            label="Emergency Location"
             defaultValue="Emergency Location"
             variant="outlined"
             style={
@@ -405,7 +443,7 @@ class App extends Component {
               readOnly: true
             }}
             label="Report Incident"
-            defaultValue="Details"
+            defaultValue="Report Incident"
             variant="outlined"
             style={
               {
