@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/FRIC/static/js/runtime~main.ff8c452f.js"
   },
   {
-    "revision": "616233754d00b9bc6ca8",
-    "url": "/FRIC/static/js/main.61623375.chunk.js"
+    "revision": "4e81e6cbd5a7d4eaa16b",
+    "url": "/FRIC/static/js/main.4e81e6cb.chunk.js"
   },
   {
     "revision": "d8e512b6096cc52f9f8f",
     "url": "/FRIC/static/js/1.d8e512b6.chunk.js"
   },
   {
-    "revision": "616233754d00b9bc6ca8",
+    "revision": "4e81e6cbd5a7d4eaa16b",
     "url": "/FRIC/static/css/main.7e180ae2.chunk.css"
   },
   {
-    "revision": "7317a93902a3c6be641f9afe76eb1fd7",
+    "revision": "fde539f75f88f0699f0d96ad1d53a855",
     "url": "/FRIC/index.html"
   }
 ];
